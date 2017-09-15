@@ -32,7 +32,7 @@ function doSomething() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             str = readBody(xhr);
-            str2 = str.slice(str.indexOf("<tr>"),str.lastIndexOf("</th>")+1);
+            str2 = str.slice(str.indexOf("<tr>"),str.lastIndexOf("</td>")+1);
             var x=[];
             for (var i=0;i<11;i++) {
               str3= str2.slice(str2.indexOf("<th>")+4,str2.indexOf("</tr>"))
