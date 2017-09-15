@@ -42,8 +42,6 @@ function drawChart() {
 
   chart.draw(data, options);
 }
-setTimeout(1000);
-drawChart();
 function doSomething() {
     var d = new Date(),
         h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() + 1, 0, 0),
@@ -59,12 +57,11 @@ function doSomething() {
             for (var i in allData) {
               allData[i][0]= new Date(allData[i][0][0],allData[i][0][1],allData[i][0][2],allData[i][0][3],allData[i][0][4]);
             }
+            clearChart();
+            drawChart();
         }
     };
     h.open('GET', '/finddata', true);
     h.send(null);
-
-    clearChart();
-    drawChart();
 };
 doSomething();
