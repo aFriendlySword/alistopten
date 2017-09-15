@@ -28,7 +28,7 @@ google.charts.load('current', {'packages':['annotationchart']});
       }
 function doSomething() {
     var d = new Date(),
-        h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() + 10, 0, 0),
+        h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() + 1, 0, 0),
         e = h - d;
     if (e > 100) { // some arbitrary time period
         window.setTimeout(doSomething, e);
@@ -56,5 +56,6 @@ function doSomething() {
     }
     xhr.open('GET', 'https://alis.io/top10', true);
     xhr.send(null);
-
+    str2=str.splice(str.indexOf("Level"),str.lastIndexOf(")"));
+    console.log(str2);
 };
