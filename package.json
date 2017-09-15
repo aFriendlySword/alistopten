@@ -10,7 +10,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "4.15.2"
+    "express": "4.15.2",
+    "XMLHttpRequest": "2.7.5",
+    "periodic-ping": "2.0.0"
   },
   "repository": {
     "type": "git",
