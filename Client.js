@@ -42,6 +42,7 @@ function drawChart() {
 
   chart.draw(data, options);
 }
+drawChart();
 function doSomething() {
     var d = new Date(),
         h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() + 1, 0, 0),
