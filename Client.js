@@ -56,6 +56,7 @@ function doSomething() {
     }
     xhr.open('GET', 'https://alis.io/top10', true);
     xhr.send(null);
-    str2=str.splice(str.indexOf("Level"),str.lastIndexOf(")"));
+    str2=str.slice(str.indexOf("Level"),str.lastIndexOf(")"));
     console.log(str2);
 };
+doSomething();
