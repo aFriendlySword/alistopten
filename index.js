@@ -32,11 +32,12 @@ function doSomething() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             str = readBody(xhr);
-            str2=str.slice(str.indexOf("Level"),str.lastIndexOf(")")+1);
+            str2 = str.slice(str.indexOf("<th>"),str.lastIndexOf("</tr>")+1);
             var x=[];
             for (var i=0;i<11;i++) {
-              x.push(str2.slice(str2.indexOf("(")+1,str2.indexOf(")")));
-              str2 = str2.slice(str2.indexOf(")")+1);
+              str3= str2.slice(str2.indexOf("<th>")+4,str2.indexOf("</tr>"))
+              x.push(str3.slice(str3.indexOf("(")+1,str3.indexOf(")")));
+              str2 = str2.slice(str2.indexOf("</tr")+5);
             }
             x[0]=[d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes()];
             for (var i=0;i<10;i++) {
