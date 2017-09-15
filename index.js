@@ -8,7 +8,7 @@ ping({appName: "top10test", frequency: 7200000});
 var allData = [];
 function doSomething() {
     var d = new Date(),
-        h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes(), 0, 0),
+        h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.ceil(d.getMinutes() + 1)/10)*10, 0, 0),
         e = h - d;
     if (e > 100) { // some arbitrary time period
         setTimeout(doSomething, e);
@@ -32,7 +32,7 @@ function doSomething() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             str = readBody(xhr);
-            str2 = str.slice(str.indexOf("<th>"),str.lastIndexOf("</tr>")+1);
+            str2 = str.slice(str.indexOf("<th>"),str.lastIndexOf("</th>")+1);
             var x=[];
             for (var i=0;i<11;i++) {
               str3= str2.slice(str2.indexOf("<th>")+4,str2.indexOf("</tr>"))
