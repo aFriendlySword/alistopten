@@ -42,6 +42,7 @@ function drawChart() {
 
   chart.draw(data, options);
 }
+setTimeout(1000);
 drawChart();
 function doSomething() {
     var d = new Date(),
