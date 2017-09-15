@@ -1,31 +1,47 @@
 google.charts.load('current', {'packages':['annotationchart']});
-      google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawChart);
+var allData =[];
+h = new XMLHttpRequest();
+h.onreadystatechange = function() {
+    if (h.readyState == 4) {
+        allData = JSON.parse(h.responseText);
+        for (var i in allData) {
+          allData[i][0]= new Date(allData[i][0][0],allData[i][0][1],allData[i][0][2],allData[i][0][3],allData[i][0][4]);
+        }
+    }
+};
+h.open('GET', '/finddata', true);
+h.send(null);
 
-      function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('date', 'Date');
-        data.addColumn('number', '#1');
-        data.addColumn('number', '#2');
-        data.addColumn('number', '#3');
-        data.addColumn('number', '#4');
-        data.addColumn('number', '#5');
-        data.addColumn('number', '#6');
-        data.addColumn('number', '#7');
-        data.addColumn('number', '#8');
-        data.addColumn('number', '#9');
-        data.addColumn('number', '#10');
+function clearChart() {
+  var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
+  chart.clearChart();
+}
 
-        data.addRows([
-          [new Date(2017, 9, 13, 15, 27),5276282,5151509,5090882,4394711,4119670,3974131,3967951,3849720,3378263,3350543]]);
+function drawChart() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'Date');
+  data.addColumn('number', '#1');
+  data.addColumn('number', '#2');
+  data.addColumn('number', '#3');
+  data.addColumn('number', '#4');
+  data.addColumn('number', '#5');
+  data.addColumn('number', '#6');
+  data.addColumn('number', '#7');
+  data.addColumn('number', '#8');
+  data.addColumn('number', '#9');
+  data.addColumn('number', '#10');
 
-        var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
+  data.addRows(allData);
 
-        var options = {
-          displayAnnotations: true
-        };
+  var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
 
-        chart.draw(data, options);
-      }
+  var options = {
+    displayAnnotations: true
+  };
+
+  chart.draw(data, options);
+}
 function doSomething() {
     var d = new Date(),
         h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() + 1, 0, 0),
@@ -34,29 +50,19 @@ function doSomething() {
         window.setTimeout(doSomething, e);
     }
     // your code
-    function readBody(xhr) {
-        var data;
-        if (!xhr.responseType || xhr.responseType === "text") {
-            data = xhr.responseText;
-        } else if (xhr.responseType === "document") {
-            data = xhr.responseXML;
-        } else {
-            data = xhr.response;
+    h = new XMLHttpRequest();
+    h.onreadystatechange = function() {
+        if (h.readyState == 4) {
+            allData = JSON.parse(h.responseText);
+            for (var i in allData) {
+              allData[i][0]= new Date(allData[i][0][0],allData[i][0][1],allData[i][0][2],allData[i][0][3],allData[i][0][4]);
+            }
         }
-        return data;
-    }
+    };
+    h.open('GET', '/finddata', true);
+    h.send(null);
 
-    var str = "";
-
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-            str = readBody(xhr);
-        }
-    }
-    xhr.open('GET', 'https://alis.io/top10', true);
-    xhr.send(null);
-    str2=str.slice(str.indexOf("Level"),str.lastIndexOf(")"));
-    console.log(str2);
+    clearChart();
+    drawChart();
 };
 doSomething();
