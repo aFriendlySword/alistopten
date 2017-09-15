@@ -16,7 +16,7 @@ google.charts.load('current', {'packages':['annotationchart']});
         data.addColumn('number', '#10');
 
         data.addRows([
-          [new Date(2017, 9, 13, 15, 27),5276282,5151509,5090882,4394711,4119670,3974131,3967951,3849720,3378263,3350543]);
+          [new Date(2017, 9, 13, 15, 27),5276282,5151509,5090882,4394711,4119670,3974131,3967951,3849720,3378263,3350543]]);
 
         var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
 
