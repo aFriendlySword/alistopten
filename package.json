@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "express": "4.15.2",
-    "XMLHttpRequest": "2.7.5",
+    "xmlhttprequest": "2.7.5",
     "periodic-ping": "2.0.0"
   },
   "repository": {
