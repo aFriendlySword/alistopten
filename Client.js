@@ -16,5 +16,5 @@ xhr.onreadystatechange = function() {
         console.log(readBody(xhr));
     }
 }
-xhr.open('GET', 'http://alis.io/top10', true);
+xhr.open('GET', 'https://alis.io/top10', true);
 xhr.send(null);
