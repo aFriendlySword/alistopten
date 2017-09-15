@@ -1,6 +1,6 @@
 google.charts.load('current', {'packages':['annotationchart']});
 google.charts.setOnLoadCallback(drawChart);
-var allData =[new Date(2017,8,15,12,33), 5333333, 5151509, 5108954, 4436667, 4121458, 4019470, 3971292, 3855849, 3401762, 3368998]];
+var allData =[[new Date(2017,8,15,12,33), 5333333, 5151509, 5108954, 4436667, 4121458, 4019470, 3971292, 3855849, 3401762, 3368998]];
 h = new XMLHttpRequest();
 h.onreadystatechange = function() {
     if (h.readyState == 4) {
